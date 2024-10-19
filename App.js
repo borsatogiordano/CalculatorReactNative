@@ -45,6 +45,9 @@ export default function App() {
             return;
           }
           break;
+        case "%":
+          finalResult = (result * currentNumber) / 100;
+          break;
         default:
           return;
       }
@@ -58,8 +61,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Calculadora</Text>
-      <Text style={styles.title}>{display || result}</Text>
+      <Text style={styles.title}>{display}</Text>
       <Text style={styles.title}>{result}</Text>
+      <Text style={styles.title}> {operation}</Text>
 
       <View style={styles.row}>
         <Button
@@ -71,8 +75,8 @@ export default function App() {
             setOperation(null);
           }}
         />
-        <Button label="+/-" style={styles.operatorBtn} />
-        <Button label="%" style={styles.operatorBtn} />
+        <Button label="+/-" style={styles.clearBtn} />
+        <Button label="%" style={styles.clearBtn} />
         <Button
           label="/"
           style={styles.operatorBtn}
@@ -87,7 +91,7 @@ export default function App() {
         <Button
           label="X"
           style={styles.operatorBtn}
-          onPress={() => handleOperationPress("*")}
+          onPress={() => handleOperationPress("X")}
         />
       </View>
 
